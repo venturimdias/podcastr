@@ -1,3 +1,8 @@
+.episodio{
+    height:calc(100vh - 104px);
+    overflow-y: scroll;
+}
+
 .container{
     max-width:45rem;
     margin:auto;

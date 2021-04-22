@@ -1,6 +1,5 @@
 import { GetStaticPaths, GetStaticProps } from 'next'
 import Link from 'next/link'
-import { useRouter } from 'next/router'
 import Image from 'next/image'
 import { format, parseISO } from 'date-fns'
 import ptBR from 'date-fns/locale/pt-BR'
@@ -26,9 +25,9 @@ type EpisodeProps = {
 }
 
 export default function Episode({ episode } : EpisodeProps){
-    const router = useRouter()
 
     return (
+        <div className={styles.episodio}>
         <div className={styles.container}>
             <div className={styles.thumbnailContainer}>
                 <Link href="/">
@@ -52,14 +51,48 @@ export default function Episode({ episode } : EpisodeProps){
                 dangerouslySetInnerHTML={{ __html: episode.description }}
             />
         </div>
+        </div>
     )
 }
+
+/* Metodos obrigatórios para rotas dinâmica */
+/* 
+    fallback 
+    false - retornar 404 caso não exista o slug no paths
+    true - buscar o conteudo para criar em disco e a chamada é no cliente (browser)
+    ------ Ncessário usar o useRoute para saber se o contudo esta carregando
+    const router = useRouter()
+    if(router.isFallback){
+        return <p>Carregando...</p>
+    }
+
+    Melhor opção
+    'blocking' - Next.js roda em dois ambientes (Cliente: browser | next.js: node.js ) 
+    busca o contudo na camada do node.js - PS: 3ª camada >  server : back-end  
+*/
 export const getStaticPaths : GetStaticPaths = async () => {
+    const { data } = await api.get('episodes',{
+        params:{
+          _limit:2,
+          _sort:'published_at',
+          _order:'desc'
+        }
+      })
+
+      const paths = data.map(episode => {
+          return{
+              params:{
+                  slug: episode.id
+              }
+          }
+       })
+
     return{
-        paths:[],
+        paths,
         fallback: 'blocking'
     }    
 }
+
 export const getStaticProps: GetStaticProps = async (ctx) =>{
     // esse slug é o nome do arquivo [slug].tsx
     const { slug } = ctx.params

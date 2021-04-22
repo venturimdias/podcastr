@@ -1,3 +1,4 @@
+import { useContext } from 'react'
 import { GetStaticProps } from 'next'
 import Link from 'next/link'
 import Image from 'next/image'
@@ -7,6 +8,7 @@ import ptBR from 'date-fns/locale/pt-BR'
 import { api } from '../services/api'
 
 import convertDurationToTimeString from '../utils/convertDurationToTimeString'
+import { PlayerContext } from '../contexts/PlayerContexts'
 
 import styles from './home.module.scss'
 
@@ -30,6 +32,7 @@ type HomeProps = {
 }
 
 export default function Home({ latestEpisodes, allEpisodes } : HomeProps) {
+  const { play } = useContext(PlayerContext)
 
   return (
     <div className={styles.homePage}>
@@ -55,11 +58,10 @@ export default function Home({ latestEpisodes, allEpisodes } : HomeProps) {
                       <span>{ episode.publishedAt }</span>
                       <span>{ episode.durationAsString }</span>
                     </div>
-                    <Link href={`/episode/${episode.id}`}>
-                    <button type="button">
+                    {/* Função que precisa de parametros no onClick tem que ser passada {() => nomeFunc()} */}
+                    <button type="button" onClick={() => play(episode)}>
                       <img src="/play-green.svg" alt="Tocar episódio" />
                     </button>
-                    </Link>
               </li>
              ) 
           })}
@@ -96,11 +98,9 @@ export default function Home({ latestEpisodes, allEpisodes } : HomeProps) {
                 <td className={styles.published}>{episode.publishedAt}</td>
                 <td>{episode.durationAsString}</td>
                 <td>
-                  <Link href={`/episode/${episode.id}`}>
-                  <button type="button">
+                  <button type="button" onClick={() => play(episode)}>
                     <img src="/play-green.svg" alt="Tocar episódio" />
                   </button>
-                  </Link>
                 </td>
                  
               </tr>
