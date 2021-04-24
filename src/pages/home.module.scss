@@ -177,3 +177,106 @@
         }
     }
 }
+
+@media (max-width:960px){
+    .latestEpisodes{
+        ul{
+            grid-template-columns: 1fr;
+
+            li{
+
+                .details{
+                    p{
+                        display:block;
+                    }
+                }
+            }
+        }
+    }
+}
+@media (max-width:768px){
+    .homePage{
+        padding:0 1rem;
+    }
+    .latestEpisodes{
+        ul{
+            li{
+                grid-template-columns: 1fr;
+                grid-gap:20px;
+
+                img {
+                    height: 15rem;
+                    border-radius:1rem;
+                }
+            }
+
+        }
+    }
+
+    .allEpisodes{
+    
+        table{
+            thead{
+                display:none;
+            }
+
+            tbody{
+                display:grid;
+                grid-template-columns: 1fr 1fr;
+                grid-gap:10px; 
+
+                tr {
+                    background:var(--white);
+                    border-radius:15px;
+
+                    td{
+                        width:100%;
+                        border:0;
+                        display:block;
+
+                        &:first-child,
+                        &:last-child{
+                            width:auto;
+                        }
+                        &.published{
+                            width:auto;
+                        }
+                        &:first-child{
+                            div{
+                                display: block !important;
+                            }
+                            img{
+                                width:100%;
+                                height:7rem;
+                                border-radius:0.5rem;
+                            }
+                        }
+                    }
+                }
+            }
+
+        }
+    }
+}
+@media (max-width:480px){
+    .allEpisodes{
+        table{
+            tbody{
+                grid-template-columns: 1fr;
+
+                tr{
+                    td{
+                        &:first-child{
+                            img{
+                                width:100%;
+                                height:15rem;
+                                border-radius:0.5rem;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+}
