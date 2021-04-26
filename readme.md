@@ -3,10 +3,9 @@
 </p>
 
 <h1 align="center">NLW 5</h1>
-<p>
+
 Instrutor: Diego Fernandes - Rocketseat
 Projeto: [Layout](https://www.figma.com/file/UwFEntsHpHYJlHNQAQr4gA/Podcastr?node-id=160%3A2761)
-</p>
 
 ## Tela
 <p align="center">
