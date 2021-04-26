@@ -15,6 +15,8 @@ type PlayerContextData ={
     isLooping: boolean;
     hasPrev: boolean;
     hasNext: boolean;
+    isActivePlayer:boolean;
+    isModoBlack: boolean;
     setPlayingState: (state : boolean) => void;
     play: (episode: Episode) => void;
     playList: (list: Episode[], index: number) => void;
@@ -24,9 +26,8 @@ type PlayerContextData ={
     toggleLoop: () => void;
     toggleShuffle: () => void;
     clearPlayerState:()=>void;
-    isActivePlayer:boolean;
     toggleActivePlayer: () => void;
-
+    toggleModoBlack: () => void;
 }
 export const PlayerContext = createContext({} as PlayerContextData)
 
@@ -41,6 +42,8 @@ export function PlayerContextProvider({ children } : PlayerContextProviderProps)
     const [ isShuffling, setIsShuffling ] = useState(false)
 
     const [ isActivePlayer, setIsActivePlayer ] = useState(false)
+    const [ isModoBlack, setIsModoBlack ] = useState(false)
+
 
     function play(episode : Episode){
       setEpisodeList([episode])
@@ -71,6 +74,18 @@ export function PlayerContextProvider({ children } : PlayerContextProviderProps)
 
     function toggleActivePlayer(){
         setIsActivePlayer(!isActivePlayer)
+    }
+
+    function toggleModoBlack(){ 
+        //let localStoregeModoBlack = localStorage.getItem('modoBlack')
+        
+        if(!isModoBlack){
+            window.localStorage.setItem('modoBlack', "1")
+        }else{
+            window.localStorage.removeItem("modoBlack")
+        }
+        
+        setIsModoBlack(!isModoBlack)
     }
 
     const hasPrev = currentEpisodeIndex > 0;
@@ -106,13 +121,15 @@ export function PlayerContextProvider({ children } : PlayerContextProviderProps)
           isPlaying, 
           isLooping, 
           isShuffling,
+          isActivePlayer,
+          isModoBlack,
           togglePlay,
           toggleLoop,
           toggleShuffle,
           setPlayingState,
           clearPlayerState,
-          isActivePlayer,
           toggleActivePlayer,
+          toggleModoBlack
         }}>
             { children }
         </PlayerContext.Provider>

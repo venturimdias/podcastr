@@ -28,10 +28,10 @@ type EpisodeProps = {
 
 export default function Episode({ episode } : EpisodeProps){
 
-    const { play } = usePlayer()
+    const { play, isModoBlack } = usePlayer()
 
     return (
-        <div className={styles.episodio}>
+        <div className={[styles.episodio, isModoBlack ? styles.modoBlack : ''].join(' ')}>
         <Head>
             <title> {episode.title} | Podcastr</title>
         </Head>

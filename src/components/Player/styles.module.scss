@@ -29,6 +29,25 @@
             opacity:0.5;
         }
     }
+
+
+    &.modoBlack{
+        background:var(--black-800);
+
+        .emptyPlayer{
+                background:linear-gradient(145deg, rgba(255,255,255,.1), rgba(255,255,255,0));
+                border-color: var(--black-400);
+        }
+        .buttons{
+            button{
+                
+                &.playButton{
+                    background:var(--black-400);
+                }
+            }
+
+        }
+    }
 }
 
 .currentEpisode{
@@ -136,7 +155,8 @@
 @media (max-width:1300px){
     .container{
         box-shadow: 0 0 10px rgba(0,0,0,.4);
-
+        z-index:100;
+        
         .btnActivePlayer{
             display:block;
             position:absolute;
@@ -173,6 +193,14 @@
             }
         }
         
+        &.modoBlack{
+            .btnActivePlayer{
+                background:var(--black-800);
+            }
+            .progressLeft{
+                background:var(--black-600);
+            }
+        }
         
     }
     
@@ -192,6 +220,14 @@
                 top:0px;
                 background:var(--purple-800);
                 border-radius:0 0 10px 0px;
+            }
+        }
+
+        &.modoBlack{
+            &.activePlayer{             
+                .btnActivePlayer{
+                    background:var(--black-400);
+                }
             }
         }
     }

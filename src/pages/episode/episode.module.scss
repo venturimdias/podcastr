@@ -1,6 +1,33 @@
 .episodio{
     height:calc(100vh - 104px);
     overflow-y: scroll;
+
+    &.modoBlack{
+        
+        background:var(--black-500);
+        color:var(--white);
+
+        .container{
+            .thumbnailContainer{
+                button{
+                    &:first-child{
+                        background:var(--black-400);
+                    }
+                    &:last-child{
+                        background:var(--black-600);
+                    }
+                }
+
+            }
+            header h1{
+                color:var(--white);
+            }
+            .desc{
+                color:var(--white);
+            }
+            
+        }
+    }
 }
 
 .container{

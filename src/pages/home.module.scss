@@ -7,6 +7,27 @@
         margin:3rem 0 1.5rem;   
 
     }
+
+    &.modoBlack{
+        background:var(--black-400);
+        color:var(--white);
+
+        ul li{
+            background:var(--black-500);
+            border:0;
+
+            .details a{
+                color:var(--white);
+            }
+        }
+
+        h2{
+            color:var(--white);
+        }
+        table td a{
+            color:var(--white);
+         }
+    }
 }
 
 .latestEpisodes{
@@ -197,6 +218,13 @@
 @media (max-width:768px){
     .homePage{
         padding:0 1rem;
+
+
+        &.modoBlack{
+            .allEpisodes table tbody tr{
+                background:var(--black-500);
+            }
+        }
     }
     .latestEpisodes{
         ul{

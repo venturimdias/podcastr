@@ -29,6 +29,7 @@ export default function Player(){
         hasNext,
         toggleActivePlayer,
         isActivePlayer,
+        isModoBlack
     } = usePlayer()
 
     useEffect(() => {
@@ -78,7 +79,11 @@ export default function Player(){
     }
 
     return(
-    <div className={[ isActivePlayer ? styles.activePlayer : '',  styles.container ].join(' ')}>
+    <div className={[ 
+        isActivePlayer ? styles.activePlayer : '',  
+        isModoBlack ? styles.modoBlack : '',
+        styles.container 
+    ].join(' ')}>
         
         <div className={ styles.progressLeft }>
             <div style={ progressBarLeftStyle } />
