@@ -28,8 +28,8 @@ Projeto: [Layout](https://www.figma.com/file/UwFEntsHpHYJlHNQAQr4gA/Podcastr?nod
 ## Disponsitivos móveis
 <p align="center">
     <img width="200px" src=".github/iphoneX1.png" />
-    <img width="200px" src=".github/iphoneX1-b.png" />
     <img width="200px" src=".github/iphoneX2.png" />
+    <img width="200px" src=".github/iphoneX1-b.png" />
     <img width="200px" src=".github/iphoneX2-b.png" />
 </p>
 <br/>
